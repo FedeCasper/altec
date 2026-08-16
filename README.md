@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Altec Ploteos e Imprenta — sitio web
 
-## Getting Started
+Sitio institucional de Altec (ploteo, impresión de planos y diseño gráfico en Godoy Cruz, Mendoza), hecho con [Next.js](https://nextjs.org) (App Router) + TypeScript + Tailwind CSS.
 
-First, run the development server:
+## Desarrollo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrí [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Otros comandos: `pnpm build` (build de producción), `pnpm start` (servir el build), `pnpm lint`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Estructura
 
-## Learn More
+- `src/app/` — páginas (App Router): Inicio, Sector Técnico, Sector Gráfico, Nosotros, Cómo Trabajamos, Contacto.
+- `src/content/` — datos editables: negocio (`business.ts`), servicios por sector (`services.ts`), navegación (`nav.ts`). Cambiar textos, horarios o servicios se hace acá, sin tocar componentes.
+- `src/components/` — UI (Header, Footer, cards, botones de WhatsApp, mapa, etc.).
+- `src/lib/` — helpers: `whatsapp.ts` (deep links de WhatsApp) y `seo.ts` (metadata y JSON-LD).
 
-To learn more about Next.js, take a look at the following resources:
+## Variables de entorno
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Ver `.env.example`. `NEXT_PUBLIC_SITE_URL` define la URL pública usada en metadata, canonical, sitemap y robots.txt — actualizarla en Vercel cuando se configure un dominio propio.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pensado para Vercel (zero-config). Alternativamente puede exportarse/hostearse en cualquier proveedor que soporte Next.js (ej. Hostinger con Node.js).
