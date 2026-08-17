@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { ClientLogos } from "@/components/ClientLogos";
+import { GoogleReviews } from "@/components/GoogleReviews";
 import { Hero } from "@/components/Hero";
+import { PromoBanner } from "@/components/PromoBanner";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SectorOverviewCard } from "@/components/SectorOverviewCard";
 import { HoursBlock } from "@/components/HoursBlock";
@@ -38,6 +41,8 @@ export default function Home() {
   return (
     <>
       <Hero />
+
+      <PromoBanner />
 
       <section className="mx-auto max-w-6xl px-6 py-20">
         <SectionHeading
@@ -96,6 +101,10 @@ export default function Home() {
           <MapEmbed />
         </div>
       </section>
+
+      <ClientLogos />
+
+      <GoogleReviews />
     </>
   );
 }

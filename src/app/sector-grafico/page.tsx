@@ -31,7 +31,12 @@ export default function SectorGraficoPage() {
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {sectorGraficoServices.map((service) => (
-          <ServiceCard key={service.id} service={service} whatsappNumber={sector.whatsapp} />
+          <ServiceCard
+            key={service.id}
+            service={service}
+            whatsappNumber={sector.whatsapp}
+            href={`/sector-grafico/${service.id}`}
+          />
         ))}
       </div>
 

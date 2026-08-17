@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { SectionHeading } from "@/components/SectionHeading";
+import { StaffCard } from "@/components/StaffCard";
 import { business } from "@/content/business";
+import { staff } from "@/content/staff";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -63,6 +65,19 @@ export default function NosotrosPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </div>
+
+      <div className="mt-16 border-t border-border pt-16">
+        <SectionHeading
+          eyebrow="Nuestro equipo"
+          title="¿Con quién querés hablar?"
+          description="Cada sector tiene un responsable directo para tu consulta."
+        />
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          {staff.map((member) => (
+            <StaffCard key={member.id} member={member} />
+          ))}
         </div>
       </div>
     </div>

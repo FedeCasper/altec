@@ -1,14 +1,17 @@
+import { ServiceSearch } from "@/components/ServiceSearch";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { business } from "@/content/business";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-background">
-      <div className="bg-blueprint-grid absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
-      <div
-        className="absolute -right-24 top-0 h-full w-1/2 bg-gradient-to-l from-primary/15 to-transparent"
-        aria-hidden="true"
-      />
+    <section className="relative border-b border-border bg-background">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="bg-blueprint-grid absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
+        <div
+          className="absolute -right-24 top-0 h-full w-1/2 bg-gradient-to-l from-primary/15 to-transparent"
+          aria-hidden="true"
+        />
+      </div>
 
       <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-6 py-24 sm:py-32">
         <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
@@ -21,6 +24,8 @@ export function Hero() {
           Servicios de ploteo, impresión de planos y diseño gráfico en Godoy Cruz, Mendoza.
           Atención personalizada para particulares, empresas y profesionales.
         </p>
+
+        <ServiceSearch />
 
         <div className="mt-2 flex flex-wrap gap-4">
           <WhatsAppButton
