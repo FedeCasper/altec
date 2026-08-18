@@ -94,13 +94,24 @@ export default async function ServiceDetailPage({ params }: Props) {
             <p className="mt-4 text-muted">{service.description}</p>
           </div>
 
-          <WhatsAppButton
-            whatsappNumber={sector.whatsapp}
-            message={service.whatsappMessage}
-            className="w-full sm:w-auto"
-          >
-            Consultar por WhatsApp
-          </WhatsAppButton>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <WhatsAppButton
+              whatsappNumber={sector.whatsapp}
+              message={service.whatsappMessage}
+              className="w-full sm:w-auto"
+            >
+              Consultar por WhatsApp
+            </WhatsAppButton>
+
+            {service.id === "carteleria" && (
+              <Link
+                href="/sector-grafico/carteleria/cartel-de-obra"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:border-primary hover:text-primary sm:w-auto"
+              >
+                Cargar cartel de obra
+              </Link>
+            )}
+          </div>
 
           <div className="flex flex-col gap-8 border-t border-border pt-8">
             {detail?.details && (
