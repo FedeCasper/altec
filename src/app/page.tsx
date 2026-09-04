@@ -53,13 +53,13 @@ export default function Home() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           <SectorOverviewCard
             title={business.sectors.tecnico.label}
-            description="Ploteo, impresión de planos, anillados, escaneo y fotocopias para arquitectos, ingenieros, constructores y estudiantes."
+            description="Ploteo, impresión de planos, escaneo, digitalización en AutoCAD, anillados y libro de obra para arquitectos, ingenieros, constructores y estudiantes."
             href="/sector-tecnico"
             services={sectorTecnicoServices.map((s) => s.name)}
           />
           <SectorOverviewCard
             title={business.sectors.grafico.label}
-            description="Gigantografías, vinilos, cartelería, tarjetas, folletos y diseño gráfico para particulares y empresas."
+            description="Vinilos, lonas, banners, gigantografías, cartelería, papelería, folletos y diseño gráfico para particulares y empresas."
             href="/sector-grafico"
             services={sectorGraficoServices.map((s) => s.name)}
           />

@@ -50,6 +50,12 @@ const paths: Record<ServiceIconName, React.ReactNode> = {
       <path d="M4 16V5a1 1 0 0 1 1-1h11" />
     </>
   ),
+  cad: (
+    <>
+      <path d="M12 20h9" />
+      <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z" />
+    </>
+  ),
   billboard: (
     <>
       <rect x="3" y="5" width="18" height="11" rx="1" />
@@ -61,6 +67,22 @@ const paths: Record<ServiceIconName, React.ReactNode> = {
     <>
       <circle cx="12" cy="12" r="8" />
       <circle cx="12" cy="12" r="2.5" />
+    </>
+  ),
+  tarp: (
+    <>
+      <rect x="3" y="6" width="18" height="12" rx="1" />
+      <circle cx="6.5" cy="6" r="0.9" fill="currentColor" stroke="none" />
+      <circle cx="17.5" cy="6" r="0.9" fill="currentColor" stroke="none" />
+      <circle cx="6.5" cy="18" r="0.9" fill="currentColor" stroke="none" />
+      <circle cx="17.5" cy="18" r="0.9" fill="currentColor" stroke="none" />
+    </>
+  ),
+  rollup: (
+    <>
+      <rect x="7" y="3" width="10" height="14" rx="1" />
+      <path d="M9 21h6" />
+      <path d="M12 17v4" />
     </>
   ),
   sign: (

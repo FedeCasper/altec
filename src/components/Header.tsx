@@ -10,7 +10,7 @@ const sectorDropdowns: Record<string, { id: string; name: string; href: string }
   "/sector-tecnico": sectorTecnicoServices.map((service) => ({
     id: service.id,
     name: service.name,
-    href: `/sector-tecnico#${service.id}`,
+    href: `/sector-tecnico/${service.id}`,
   })),
   "/sector-grafico": sectorGraficoServices.map((service) => ({
     id: service.id,
@@ -23,10 +23,10 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
       <div className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Logo />
+        <Logo className="shrink-0" />
 
-        <nav className="hidden md:block">
-          <ul className="flex items-center gap-7">
+        <nav className="hidden xl:block">
+          <ul className="flex items-center gap-5">
             {navItems.map((item) => {
               const services = sectorDropdowns[item.href];
 
@@ -35,7 +35,7 @@ export function Header() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="text-sm font-medium uppercase tracking-wide text-muted transition-colors hover:text-primary"
+                      className="whitespace-nowrap text-sm font-medium uppercase tracking-wide text-muted transition-colors hover:text-primary"
                     >
                       {item.label}
                     </Link>
@@ -47,7 +47,7 @@ export function Header() {
                 <li key={item.href} className="group relative">
                   <Link
                     href={item.href}
-                    className="text-sm font-medium uppercase tracking-wide text-muted transition-colors hover:text-primary"
+                    className="whitespace-nowrap text-sm font-medium uppercase tracking-wide text-muted transition-colors hover:text-primary"
                   >
                     {item.label}
                   </Link>
@@ -71,7 +71,7 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden shrink-0 xl:block">
           <WhatsAppButton
             whatsappNumber={business.sectors.tecnico.whatsapp}
             message="Hola, quiero hacer una consulta."

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { navItems } from "@/content/nav";
-import { sectorGraficoServices } from "@/content/services";
+import { sectorGraficoServices, sectorTecnicoServices } from "@/content/services";
 import { siteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -16,5 +16,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...navEntries, ...graficoServiceEntries];
+  const tecnicoServiceEntries = sectorTecnicoServices.map((service) => ({
+    url: `${siteUrl}/sector-tecnico/${service.id}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.5,
+  }));
+
+  return [...navEntries, ...graficoServiceEntries, ...tecnicoServiceEntries];
 }

@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Sector Técnico y Arquitectura",
   description:
-    "Ploteo, impresión de planos, anillados, escaneo y fotocopias en Godoy Cruz, Mendoza. Trabajos personalizados para arquitectos, ingenieros y constructores.",
+    "Ploteo e impresión de planos, escaneo, digitalización en AutoCAD, anillados y libro de obra en Godoy Cruz, Mendoza. Trabajos personalizados para arquitectos, ingenieros y constructores.",
   path: "/sector-tecnico",
 });
 
@@ -21,7 +21,7 @@ export default function SectorTecnicoPage() {
       <div className="flex flex-col gap-6 border-b border-border pb-12 sm:flex-row sm:items-end sm:justify-between">
         <SectionHeading
           eyebrow="Sector Técnico / Arquitectura"
-          title="Ploteo e impresión de planos"
+          title="Ploteo, impresión de planos y digitalización"
           description="Servicios pensados para arquitectos, ingenieros, agrimensores, maestros mayores de obra, constructores y estudiantes. Todas las medidas, todos los formatos."
         />
         <WhatsAppButton whatsappNumber={sector.whatsapp} message="Hola, quiero hacer una consulta técnica.">
@@ -31,7 +31,12 @@ export default function SectorTecnicoPage() {
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {sectorTecnicoServices.map((service) => (
-          <ServiceCard key={service.id} service={service} whatsappNumber={sector.whatsapp} />
+          <ServiceCard
+            key={service.id}
+            service={service}
+            whatsappNumber={sector.whatsapp}
+            href={`/sector-tecnico/${service.id}`}
+          />
         ))}
       </div>
 

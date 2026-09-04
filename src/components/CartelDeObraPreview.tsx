@@ -31,7 +31,12 @@ export function CartelDeObraPreview({
   ];
 
   const profesionalesCompletos = profesionales.filter(
-    (profesional) => profesional.cargo || profesional.tarea || profesional.matricula || profesional.categoria,
+    (profesional) =>
+      profesional.nombre ||
+      profesional.cargo ||
+      profesional.tareas.length > 0 ||
+      profesional.matricula ||
+      profesional.categoria,
   );
 
   return (
@@ -69,23 +74,26 @@ export function CartelDeObraPreview({
                 {profesionalesCompletos.map((profesional, index) => (
                   <div
                     key={index}
-                    className="grid grid-cols-2 gap-x-3 gap-y-0.5 rounded-lg border border-border px-3 py-2 text-xs sm:text-sm"
+                    className="flex flex-col gap-1 rounded-lg border border-border px-3 py-2 text-xs sm:text-sm"
                   >
+                    <p className="font-semibold text-foreground">{profesional.nombre || "—"}</p>
+                    <div className="grid grid-cols-2 gap-x-3 gap-y-0.5">
+                      <p>
+                        <span className="text-muted">Cargo: </span>
+                        {profesional.cargo || "—"}
+                      </p>
+                      <p>
+                        <span className="text-muted">Matrícula: </span>
+                        {profesional.matricula || "—"}
+                      </p>
+                      <p>
+                        <span className="text-muted">Categoría: </span>
+                        {profesional.categoria || "—"}
+                      </p>
+                    </div>
                     <p>
-                      <span className="text-muted">Cargo: </span>
-                      {profesional.cargo || "—"}
-                    </p>
-                    <p>
-                      <span className="text-muted">Tarea: </span>
-                      {profesional.tarea || "—"}
-                    </p>
-                    <p>
-                      <span className="text-muted">Matrícula: </span>
-                      {profesional.matricula || "—"}
-                    </p>
-                    <p>
-                      <span className="text-muted">Categoría: </span>
-                      {profesional.categoria || "—"}
+                      <span className="text-muted">Tareas: </span>
+                      {profesional.tareas.length > 0 ? profesional.tareas.join(", ") : "—"}
                     </p>
                   </div>
                 ))}

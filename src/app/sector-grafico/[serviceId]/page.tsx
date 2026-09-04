@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PaperSelector } from "@/components/PaperSelector";
+import { MaterialSelector } from "@/components/MaterialSelector";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ServiceIcon } from "@/components/ServiceIcon";
@@ -114,7 +114,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           </div>
 
           <div className="flex flex-col gap-8 border-t border-border pt-8">
-            {detail?.details && (
+            {detail?.details && !detail.materials && (
               <div>
                 <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground">
                   Detalles
@@ -122,9 +122,13 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <p className="mt-4 text-sm leading-relaxed text-muted">{detail.details}</p>
               </div>
             )}
-            {detail?.papers ? (
+            {detail?.materials ? (
               <>
-                <PaperSelector papers={detail.papers} />
+                <MaterialSelector
+                  label={detail.materialsLabel ?? "Material"}
+                  options={detail.materials}
+                  fallbackDescription={detail.details}
+                />
                 {detail.printSystems && (
                   <div>
                     <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground">

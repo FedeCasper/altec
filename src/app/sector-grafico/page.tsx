@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Sector Gráfico",
   description:
-    "Gigantografías, vinilos, cartelería, tarjetas, folletos y diseño gráfico en Godoy Cruz, Mendoza. Trabajos personalizados para particulares y empresas.",
+    "Vinilos, lonas, banners, gigantografías, cartelería, papelería, folletos y diseño gráfico en Godoy Cruz, Mendoza. Trabajos personalizados para particulares y empresas.",
   path: "/sector-grafico",
 });
 
@@ -22,7 +22,7 @@ export default function SectorGraficoPage() {
         <SectionHeading
           eyebrow="Sector Gráfico"
           title="Impresión, gigantografías y diseño"
-          description="Gigantografías, vinilos, cartelería, tarjetas, folletos y diseño gráfico a medida para particulares y empresas."
+          description="Vinilos, lonas, banners, gigantografías, cartelería, papelería, folletos y diseño gráfico a medida para particulares y empresas."
         />
         <WhatsAppButton whatsappNumber={sector.whatsapp} message="Hola, quiero hacer una consulta gráfica.">
           Consultar por WhatsApp

@@ -4,17 +4,21 @@ import { useState } from "react";
 import { CartelDeObraPreview } from "@/components/CartelDeObraPreview";
 import {
   MAX_PROFESIONALES,
+  MIN_PROFESIONALES,
   emptyProfesional,
   medidas,
+  tareas,
   type Medida,
   type Profesional,
+  type Tarea,
 } from "@/content/cartelDeObra";
+import { generateCartelDeObraPdfBlob } from "@/lib/cartelDeObraPdf";
 
-type ProfesionalField = keyof Profesional;
+type ProfesionalTextField = "nombre" | "cargo" | "matricula" | "categoria";
 
-const profesionalFields: { key: ProfesionalField; label: string }[] = [
+const profesionalFields: { key: ProfesionalTextField; label: string }[] = [
+  { key: "nombre", label: "Nombre del profesional" },
   { key: "cargo", label: "Cargo del profesional" },
-  { key: "tarea", label: "Tarea" },
   { key: "matricula", label: "Matrícula" },
   { key: "categoria", label: "Categoría" },
 ];
@@ -29,10 +33,49 @@ export function CartelDeObraForm() {
   const [ubicacion, setUbicacion] = useState("");
   const [expediente, setExpediente] = useState("");
   const [profesionales, setProfesionales] = useState<Profesional[]>([{ ...emptyProfesional }]);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function updateProfesional(index: number, field: ProfesionalField, value: string) {
+  async function handleDownloadPdf() {
+    setIsGenerating(true);
+    setError(null);
+    try {
+      const blob = await generateCartelDeObraPdfBlob({
+        medida,
+        obra,
+        propietario,
+        ubicacion,
+        expediente,
+        profesionales,
+      });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `cartel-de-obra-${medida.replace(/\s+/g, "")}.pdf`;
+      link.click();
+      URL.revokeObjectURL(url);
+    } catch {
+      setError("No pudimos generar el PDF. Probá de nuevo.");
+    } finally {
+      setIsGenerating(false);
+    }
+  }
+
+  function updateProfesional(index: number, field: ProfesionalTextField, value: string) {
     setProfesionales((current) =>
       current.map((profesional, i) => (i === index ? { ...profesional, [field]: value } : profesional)),
+    );
+  }
+
+  function toggleTarea(index: number, tarea: Tarea) {
+    setProfesionales((current) =>
+      current.map((profesional, i) => {
+        if (i !== index) return profesional;
+        const nextTareas = profesional.tareas.includes(tarea)
+          ? profesional.tareas.filter((item) => item !== tarea)
+          : [...profesional.tareas, tarea];
+        return { ...profesional, tareas: nextTareas };
+      }),
     );
   }
 
@@ -47,7 +90,28 @@ export function CartelDeObraForm() {
   }
 
   return (
-    <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+    <div className="flex flex-col gap-12">
+      <div>
+        <CartelDeObraPreview
+          medida={medida}
+          obra={obra}
+          propietario={propietario}
+          ubicacion={ubicacion}
+          expediente={expediente}
+          profesionales={profesionales}
+        />
+
+        <button
+          type="button"
+          onClick={handleDownloadPdf}
+          disabled={isGenerating}
+          className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        >
+          {isGenerating ? "Generando PDF..." : "Descargar PDF"}
+        </button>
+        {error && <p className="mt-2 text-sm text-primary">{error}</p>}
+      </div>
+
       <form className="flex flex-col gap-8" onSubmit={(event) => event.preventDefault()}>
         <div>
           <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground">
@@ -131,7 +195,7 @@ export function CartelDeObraForm() {
                   <span className="text-xs font-semibold uppercase tracking-wide text-muted">
                     Profesional {index + 1}
                   </span>
-                  {profesionales.length > 1 && (
+                  {profesionales.length > MIN_PROFESIONALES && (
                     <button
                       type="button"
                       onClick={() => removeProfesional(index)}
@@ -154,6 +218,30 @@ export function CartelDeObraForm() {
                     </label>
                   ))}
                 </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-sm text-muted">Tareas:</span>
+                  <div className="flex flex-wrap gap-2">
+                    {tareas.map((tarea) => {
+                      const checked = profesional.tareas.includes(tarea);
+                      return (
+                        <button
+                          key={tarea}
+                          type="button"
+                          onClick={() => toggleTarea(index, tarea)}
+                          aria-pressed={checked}
+                          className={`rounded-lg border px-3 py-1.5 text-xs transition-colors ${
+                            checked
+                              ? "border-primary bg-primary/10 text-primary"
+                              : "border-border text-foreground hover:border-primary hover:text-primary"
+                          }`}
+                        >
+                          {tarea}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -169,17 +257,6 @@ export function CartelDeObraForm() {
           )}
         </div>
       </form>
-
-      <div className="lg:sticky lg:top-24">
-        <CartelDeObraPreview
-          medida={medida}
-          obra={obra}
-          propietario={propietario}
-          ubicacion={ubicacion}
-          expediente={expediente}
-          profesionales={profesionales}
-        />
-      </div>
     </div>
   );
 }
