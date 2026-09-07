@@ -8,21 +8,43 @@ export function PromoBanner() {
     return null;
   }
 
+  const whatsappMessage = promoBanner.whatsappMessage ?? "Hola, quiero consultar por la promoción.";
+
+  const cta = promoBanner.ctaLabel && (
+    <a
+      href={buildWhatsAppLink(business.sectors.tecnico.whatsapp, whatsappMessage)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex shrink-0 items-center justify-center rounded-[5px] bg-background px-7 py-3.5 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:bg-surface-alt"
+    >
+      {promoBanner.ctaLabel}
+    </a>
+  );
+
+  if (promoBanner.image) {
+    return (
+      <section className="relative overflow-hidden bg-primary">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-4">
+          <div
+            className="relative w-full overflow-hidden rounded-2xl"
+            style={{ aspectRatio: promoBanner.imageAspectRatio ?? "16 / 9" }}
+          >
+            <Image
+              src={promoBanner.image}
+              alt={promoBanner.imageAlt ?? ""}
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          {cta}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="relative overflow-hidden bg-primary">
-      {promoBanner.image && (
-        <>
-          <Image
-            src={promoBanner.image}
-            alt=""
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/20" />
-        </>
-      )}
-
       <div className="relative mx-auto flex min-h-64 max-w-6xl flex-col items-start justify-center gap-6 px-6 py-12 sm:min-h-72 sm:py-16">
         <div className="max-w-xl">
           <h2 className="font-heading text-4xl font-bold uppercase leading-tight tracking-tight text-primary-foreground text-balance sm:text-5xl">
@@ -33,19 +55,7 @@ export function PromoBanner() {
           )}
         </div>
 
-        {promoBanner.ctaLabel && (
-          <a
-            href={buildWhatsAppLink(
-              business.sectors.tecnico.whatsapp,
-              promoBanner.whatsappMessage ?? "Hola, quiero consultar por la promoción."
-            )}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center justify-center rounded-full bg-primary-foreground px-7 py-3.5 text-sm font-semibold uppercase tracking-wide text-primary transition-colors hover:bg-white"
-          >
-            {promoBanner.ctaLabel}
-          </a>
-        )}
+        {cta}
       </div>
     </section>
   );

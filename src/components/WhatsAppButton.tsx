@@ -28,7 +28,7 @@ export function WhatsAppButton({
       href={buildWhatsAppLink(whatsappNumber, message)}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold uppercase tracking-wide transition-colors ${variantClasses[variant]} ${className ?? ""}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-[5px] px-5 py-3 text-sm font-semibold uppercase tracking-wide transition-colors ${variantClasses[variant]} ${className ?? ""}`}
     >
       <WhatsAppGlyph className="h-4 w-4" />
       {children}

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { RelatedServiceCard } from "@/components/RelatedServiceCard";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ServiceCard } from "@/components/ServiceCard";
 import { ServiceIcon } from "@/components/ServiceIcon";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { business } from "@/content/business";
@@ -58,15 +58,15 @@ export default async function TecnicoServiceDetailPage({ params }: Props) {
         ← {sector.label}
       </Link>
 
-      <div className="mt-8 grid gap-12 lg:grid-cols-2 lg:items-start">
-        <div className="lg:sticky lg:top-24">
+      <div className="mt-8 grid gap-12 lg:grid-cols-[280px_1fr] lg:items-start">
+        <div className="mx-auto w-full max-w-[280px] lg:sticky lg:top-24">
           <div className="bg-blueprint-grid-fine relative aspect-square overflow-hidden rounded-2xl border border-border bg-surface">
             <div
               className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-transparent"
               aria-hidden="true"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <ServiceIcon name={service.icon} className="h-28 w-28 text-primary/80" />
+              <ServiceIcon name={service.icon} className="h-20 w-20 text-primary/80" />
             </div>
           </div>
         </div>
@@ -133,7 +133,7 @@ export default async function TecnicoServiceDetailPage({ params }: Props) {
                   {detail.idealPara.map((item) => (
                     <span
                       key={item}
-                      className="rounded-full border border-border px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted"
+                      className="rounded-[5px] border border-border px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted"
                     >
                       {item}
                     </span>
@@ -155,12 +155,7 @@ export default async function TecnicoServiceDetailPage({ params }: Props) {
         <SectionHeading eyebrow="También te puede interesar" title="Otros servicios del sector" />
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {otherServices.map((item) => (
-            <ServiceCard
-              key={item.id}
-              service={item}
-              whatsappNumber={sector.whatsapp}
-              href={`/sector-tecnico/${item.id}`}
-            />
+            <RelatedServiceCard key={item.id} service={item} href={`/sector-tecnico/${item.id}`} />
           ))}
         </div>
       </div>

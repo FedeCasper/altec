@@ -10,7 +10,6 @@ export type ServiceDetail = {
   details?: string;
   materialsLabel?: string;
   materials?: MaterialOption[];
-  printSystems?: string[];
   note?: string;
 };
 
@@ -18,13 +17,14 @@ const genericNote =
   "Consultanos por WhatsApp para conocer materiales, medidas y terminaciones disponibles.";
 
 // Papel obra y Papel fotográfico brillante simple faz: datos confirmados.
-// El resto de los materiales (papeles, vinilos, lonas y banners) son
-// combinaciones de referencia inventadas para completar los selectores —
-// falta confirmar gramajes, tamaños y descripciones reales con Altec.
+// El resto de los materiales (papeles, vinilos, lonas, banners y los
+// productos de papelería) son combinaciones de referencia inventadas para
+// completar los selectores — falta confirmar gramajes, tamaños y
+// descripciones reales con Altec.
 export const serviceDetails: Record<string, ServiceDetail> = {
   "impresion-color": {
     details:
-      "La impresión A4 / A3 a color es ideal para folletería, láminas, afiches chicos, presentaciones y cualquier trabajo que necesite buena calidad de imagen y color. Elegí el papel para ver el detalle de cada opción.",
+      "Impresiones a color con sistema de chorro a tinta, disponibles en diferentes formatos, tamaños y tipos de papel para adaptarse a cada necesidad. Ideales para fotografías, afiches, trabajos escolares y universitarios, presentaciones, láminas, ilustraciones, folletos, material publicitario, invitaciones, proyectos, planos con imágenes y todo tipo de trabajos donde se necesite una impresión a color de buena calidad y excelente definición.",
     materialsLabel: "Papel",
     materials: [
       {
@@ -70,12 +70,11 @@ export const serviceDetails: Record<string, ServiceDetail> = {
           "Papel autoadhesivo con terminación brillante, ideal para stickers, etiquetas y señalética temporal.",
       },
     ],
-    printSystems: ["Chorro a tinta"],
   },
   gigantografias: { note: genericNote },
   vinilos: {
     details:
-      "Vinilos autoadhesivos para vidrieras, autos, mobiliario y señalética. Elegí el tipo de vinilo para ver el detalle de cada opción.",
+      "Impresión en vinilo de alta calidad, ideal para crear piezas gráficas resistentes y versátiles para interiores y exteriores. Una excelente opción para cartelería, vidrieras, promociones, señalización, decoración, vehículos, escaparates, etiquetas, gráficos para paredes, campañas publicitarias y todo tipo de piezas que necesiten una impresión llamativa, duradera y adaptable a diferentes superficies y tamaños.",
     materialsLabel: "Tipo de vinilo",
     materials: [
       {
@@ -97,7 +96,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   },
   lonas: {
     details:
-      "Lonas de gran formato para fachadas, eventos y locales. Elegí el tipo de lona para ver el detalle de cada opción.",
+      "Impresión en lona para crear piezas gráficas de gran formato, resistentes y de alto impacto visual. Ideal para banners, carteles publicitarios, promociones, eventos, fachadas, obras, comercios, campañas, señalización y comunicación exterior. Una solución versátil para proyectos que necesitan gran tamaño, buena visibilidad y una impresión preparada para distintos usos, tanto en interiores como en exteriores.",
     materialsLabel: "Tipo de lona",
     materials: [
       {
@@ -132,7 +131,37 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
   },
   carteleria: { note: genericNote },
-  papeleria: { note: genericNote },
+  papeleria: {
+    details:
+      "Papelería institucional y comercial para presentar tu marca con una imagen prolija. Elegí el tipo de producto para ver el detalle de cada opción.",
+    materialsLabel: "Tipo de producto",
+    materials: [
+      {
+        name: "Tarjetas personales",
+        description:
+          "Tarjetas con tu nombre, contacto y rubro, en un formato prolijo y fácil de llevar para presentarte profesionalmente.",
+      },
+      {
+        name: "Folletos",
+        description:
+          "Ideales para promocionar productos, servicios o eventos con información clara y buena presentación.",
+      },
+      {
+        name: "Hojas membretadas",
+        description:
+          "Papelería con tu marca para presupuestos, notas y comunicaciones institucionales.",
+      },
+      {
+        name: "Carpetas institucionales",
+        description:
+          "Carpetas personalizadas para presentar propuestas, contratos o material institucional con una imagen prolija.",
+      },
+      {
+        name: "Infografías",
+        description: "Piezas visuales para explicar procesos, datos o información de forma clara y atractiva.",
+      },
+    ],
+  },
   folletos: { note: genericNote },
   "diseno-grafico": {
     note: "Consultanos por WhatsApp para conocer el proceso y alcance de este servicio.",

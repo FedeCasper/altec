@@ -21,7 +21,7 @@ export function SectorOverviewCard({ title, description, href, services }: Props
         {services.map((service) => (
           <li
             key={service}
-            className="rounded-full border border-border px-3 py-1 text-xs uppercase tracking-wide text-muted"
+            className="rounded-[5px] border border-border px-3 py-1 text-xs uppercase tracking-wide text-muted"
           >
             {service}
           </li>

@@ -7,7 +7,6 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { SectorOverviewCard } from "@/components/SectorOverviewCard";
 import { HoursBlock } from "@/components/HoursBlock";
 import { MapEmbed } from "@/components/MapEmbed";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { business } from "@/content/business";
 import { sectorGraficoServices, sectorTecnicoServices } from "@/content/services";
 import { buildMetadata } from "@/lib/seo";
@@ -90,13 +89,6 @@ export default function Home() {
             <div className="mt-6">
               <HoursBlock />
             </div>
-            <WhatsAppButton
-              whatsappNumber={business.sectors.tecnico.whatsapp}
-              message="Hola, quiero hacer una consulta."
-              className="mt-6"
-            >
-              Consultanos ahora
-            </WhatsAppButton>
           </div>
           <MapEmbed />
         </div>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { navItems } from "@/content/nav";
 import { business } from "@/content/business";
 import { Logo } from "@/components/Logo";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export function Footer() {
   return (
@@ -31,18 +32,38 @@ export function Footer() {
           <h3 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground">
             Contacto
           </h3>
-          <ul className="mt-4 space-y-2 text-sm text-muted">
+          <ul className="mt-4 space-y-4 text-sm text-muted">
             <li>{business.address.full}</li>
             <li>
-              Técnico / Arquitectura:{" "}
+              <span className="text-foreground">Sector Arquitectura:</span>
+              <br />
               <a href={`mailto:${business.sectors.tecnico.email}`} className="hover:text-primary">
                 {business.sectors.tecnico.email}
               </a>
+              <br />
+              <a
+                href={buildWhatsAppLink(business.sectors.tecnico.whatsapp, "Hola, quiero hacer una consulta.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary"
+              >
+                {business.sectors.tecnico.whatsappDisplay}
+              </a>
             </li>
             <li>
-              Gráfico:{" "}
+              <span className="text-foreground">Sector Gráfico:</span>
+              <br />
               <a href={`mailto:${business.sectors.grafico.email}`} className="hover:text-primary">
                 {business.sectors.grafico.email}
+              </a>
+              <br />
+              <a
+                href={buildWhatsAppLink(business.sectors.grafico.whatsapp, "Hola, quiero hacer una consulta.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary"
+              >
+                {business.sectors.grafico.whatsappDisplay}
               </a>
             </li>
             <li>

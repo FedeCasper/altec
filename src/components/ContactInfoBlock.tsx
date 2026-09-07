@@ -1,5 +1,23 @@
 import { business } from "@/content/business";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { WhatsAppButton, WhatsAppGlyph } from "@/components/WhatsAppButton";
+
+function MailGlyph({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m4 7 8 6 8-6" />
+    </svg>
+  );
+}
 
 export function ContactInfoBlock({ className }: { className?: string }) {
   const sectors = [business.sectors.tecnico, business.sectors.grafico];
@@ -15,12 +33,17 @@ export function ContactInfoBlock({ className }: { className?: string }) {
             <p className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground">
               {sector.label}
             </p>
-            <p className="mt-2 text-sm text-muted">WhatsApp: {sector.whatsappDisplay}</p>
-            <p className="text-sm text-muted">
-              <a href={`mailto:${sector.email}`} className="hover:text-primary">
-                {sector.email}
-              </a>
+            <p className="mt-2 flex items-center gap-2 text-sm text-muted">
+              <WhatsAppGlyph className="h-4 w-4 shrink-0 text-primary" />
+              {sector.whatsappDisplay}
             </p>
+            <a
+              href={`mailto:${sector.email}`}
+              className="mt-1 flex items-center gap-2 text-sm text-muted hover:text-primary"
+            >
+              <MailGlyph className="h-4 w-4 shrink-0 text-primary" />
+              {sector.email}
+            </a>
             <WhatsAppButton
               whatsappNumber={sector.whatsapp}
               message="Hola, quiero hacer una consulta."

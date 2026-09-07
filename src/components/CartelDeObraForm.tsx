@@ -105,7 +105,7 @@ export function CartelDeObraForm() {
           type="button"
           onClick={handleDownloadPdf}
           disabled={isGenerating}
-          className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+          className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-[5px] bg-primary px-5 py-3 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
         >
           {isGenerating ? "Generando PDF..." : "Descargar PDF"}
         </button>

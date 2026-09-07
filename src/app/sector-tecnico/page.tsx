@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ServiceCard } from "@/components/ServiceCard";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { business } from "@/content/business";
 import { sectorTecnicoServices } from "@/content/services";
 import { buildMetadata } from "@/lib/seo";
@@ -18,15 +17,12 @@ export default function SectorTecnicoPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-16">
-      <div className="flex flex-col gap-6 border-b border-border pb-12 sm:flex-row sm:items-end sm:justify-between">
+      <div className="border-b border-border pb-12">
         <SectionHeading
           eyebrow="Sector Técnico / Arquitectura"
           title="Ploteo, impresión de planos y digitalización"
           description="Servicios pensados para arquitectos, ingenieros, agrimensores, maestros mayores de obra, constructores y estudiantes. Todas las medidas, todos los formatos."
         />
-        <WhatsAppButton whatsappNumber={sector.whatsapp} message="Hola, quiero hacer una consulta técnica.">
-          Consultar por WhatsApp
-        </WhatsAppButton>
       </div>
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -38,21 +34,6 @@ export default function SectorTecnicoPage() {
             href={`/sector-tecnico/${service.id}`}
           />
         ))}
-      </div>
-
-      <div className="mt-16 rounded-xl border border-border bg-surface p-8">
-        <h2 className="font-heading text-lg font-semibold uppercase tracking-wide text-foreground">
-          Ideal para
-        </h2>
-        <p className="mt-2 text-sm text-muted">
-          Arquitectos, maestros mayores de obra, ingenieros, agrimensores, constructores y estudiantes.
-        </p>
-        <p className="mt-4 text-sm text-muted">
-          Contacto directo del sector: {sector.whatsappDisplay} ·{" "}
-          <a href={`mailto:${sector.email}`} className="text-primary hover:text-primary-hover">
-            {sector.email}
-          </a>
-        </p>
       </div>
     </div>
   );

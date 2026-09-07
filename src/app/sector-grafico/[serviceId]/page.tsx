@@ -3,10 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MaterialSelector } from "@/components/MaterialSelector";
+import { RelatedServiceCard } from "@/components/RelatedServiceCard";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ServiceCard } from "@/components/ServiceCard";
 import { ServiceIcon } from "@/components/ServiceIcon";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { business } from "@/content/business";
 import { sectorGraficoServices } from "@/content/services";
 import { serviceDetails } from "@/content/serviceDetails";
@@ -60,8 +59,8 @@ export default async function ServiceDetailPage({ params }: Props) {
         ← {sector.label}
       </Link>
 
-      <div className="mt-8 grid gap-12 lg:grid-cols-2 lg:items-start">
-        <div className="lg:sticky lg:top-24">
+      <div className="mt-8 grid gap-12 lg:grid-cols-[280px_1fr] lg:items-start">
+        <div className="mx-auto w-full max-w-[280px] lg:sticky lg:top-24">
           <div className="bg-blueprint-grid-fine relative aspect-square overflow-hidden rounded-2xl border border-border bg-surface">
             <div
               className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-transparent"
@@ -73,11 +72,11 @@ export default async function ServiceDetailPage({ params }: Props) {
                 alt={service.name}
                 fill
                 className="object-cover"
-                sizes="(min-width: 1024px) 40vw, 100vw"
+                sizes="280px"
               />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center">
-                <ServiceIcon name={service.icon} className="h-28 w-28 text-primary/80" />
+                <ServiceIcon name={service.icon} className="h-20 w-20 text-primary/80" />
               </div>
             )}
           </div>
@@ -91,62 +90,32 @@ export default async function ServiceDetailPage({ params }: Props) {
             <h1 className="font-heading mt-2 text-3xl font-bold uppercase tracking-tight text-foreground sm:text-4xl">
               {service.name}
             </h1>
-            <p className="mt-4 text-muted">{service.description}</p>
+            <p className="mt-4 text-muted">{detail?.details ?? service.description}</p>
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <WhatsAppButton
-              whatsappNumber={sector.whatsapp}
-              message={service.whatsappMessage}
-              className="w-full sm:w-auto"
-            >
-              Consultar por WhatsApp
-            </WhatsAppButton>
-
             {service.id === "carteleria" && (
               <Link
                 href="/sector-grafico/carteleria/cartel-de-obra"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:border-primary hover:text-primary sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-[5px] bg-primary px-5 py-3 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-primary-hover sm:w-auto"
               >
                 Cargar cartel de obra
               </Link>
             )}
+
+            {service.id === "impresion-color" && (
+              <Link
+                href="/sector-grafico/impresion-color/asistente"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-[5px] bg-primary px-5 py-3 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-primary-hover sm:w-auto"
+              >
+                Te ayudamos a hacer tu pedido
+              </Link>
+            )}
           </div>
 
-          <div className="flex flex-col gap-8 border-t border-border pt-8">
-            {detail?.details && !detail.materials && (
-              <div>
-                <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground">
-                  Detalles
-                </h2>
-                <p className="mt-4 text-sm leading-relaxed text-muted">{detail.details}</p>
-              </div>
-            )}
+          <div id="detalles-tecnicos" className="flex flex-col gap-8 border-t border-border pt-8">
             {detail?.materials ? (
-              <>
-                <MaterialSelector
-                  label={detail.materialsLabel ?? "Material"}
-                  options={detail.materials}
-                  fallbackDescription={detail.details}
-                />
-                {detail.printSystems && (
-                  <div>
-                    <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground">
-                      Sistema de impresión
-                    </h2>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {detail.printSystems.map((system) => (
-                        <span
-                          key={system}
-                          className="rounded-lg border border-border px-4 py-2 text-sm text-foreground"
-                        >
-                          {system}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </>
+              <MaterialSelector label={detail.materialsLabel ?? "Material"} options={detail.materials} />
             ) : (
               <p className="rounded-xl border border-border bg-surface p-6 text-sm text-muted">
                 {detail?.note ?? "Consultanos por WhatsApp para conocer más detalles de este servicio."}
@@ -160,12 +129,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         <SectionHeading eyebrow="También te puede interesar" title="Otros servicios del sector" />
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {otherServices.map((item) => (
-            <ServiceCard
-              key={item.id}
-              service={item}
-              whatsappNumber={sector.whatsapp}
-              href={`/sector-grafico/${item.id}`}
-            />
+            <RelatedServiceCard key={item.id} service={item} href={`/sector-grafico/${item.id}`} />
           ))}
         </div>
       </div>

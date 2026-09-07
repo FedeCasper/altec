@@ -15,12 +15,12 @@ const normalize = (value: string) =>
 const searchableServices = [
   ...sectorTecnicoServices.map((service) => ({
     ...service,
-    href: `/sector-tecnico#${service.id}`,
+    href: `/sector-tecnico/${service.id}`,
     sectorLabel: business.sectors.tecnico.shortLabel,
   })),
   ...sectorGraficoServices.map((service) => ({
     ...service,
-    href: `/sector-grafico#${service.id}`,
+    href: `/sector-grafico/${service.id}`,
     sectorLabel: business.sectors.grafico.shortLabel,
   })),
 ];
@@ -57,8 +57,8 @@ export function ServiceSearch() {
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Buscá un servicio: ploteo, vinilos, tarjetas…"
-          className="w-full rounded-full border border-border bg-surface py-3 pl-11 pr-4 text-sm text-foreground placeholder:text-muted focus:border-primary focus:outline-none"
+          placeholder="Buscá un servicio o un producto..."
+          className="w-full rounded-[5px] border border-border bg-surface py-3 pl-11 pr-4 text-sm text-foreground placeholder:text-muted focus:border-primary focus:outline-none"
         />
       </div>
 

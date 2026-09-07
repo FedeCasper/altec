@@ -71,7 +71,7 @@ export function GoogleReviews() {
             href={googleReviews.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 inline-flex items-center justify-center rounded-full border border-border px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:border-primary hover:text-primary"
+            className="mt-2 inline-flex items-center justify-center rounded-[5px] border border-border px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:border-primary hover:text-primary"
           >
             Ver reseñas en Google
           </a>

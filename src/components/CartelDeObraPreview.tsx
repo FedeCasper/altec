@@ -51,7 +51,7 @@ export function CartelDeObraPreview({
         <div className="flex h-full flex-col gap-4 overflow-y-auto">
           <div className="flex items-start justify-between gap-4 border-b border-border pb-3">
             <span className="font-logo text-2xl leading-none text-primary sm:text-3xl">ALTEC</span>
-            <span className="rounded-full border border-border px-3 py-1 text-xs font-semibold uppercase tracking-wide text-muted">
+            <span className="rounded-[5px] border border-border px-3 py-1 text-xs font-semibold uppercase tracking-wide text-muted">
               {medida} cm
             </span>
           </div>

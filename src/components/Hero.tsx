@@ -1,6 +1,4 @@
-import { ServiceSearch } from "@/components/ServiceSearch";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { business } from "@/content/business";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -15,32 +13,29 @@ export function Hero() {
 
       <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-6 py-24 sm:py-32">
         <span className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
-          Ploteo · Impresión · Diseño gráfico
+          Arquitectura · Diseño . y más...
         </span>
         <h1 className="font-heading max-w-3xl text-4xl font-bold uppercase leading-tight tracking-tight text-foreground text-balance sm:text-6xl">
-          De la idea al plano, del plano a la impresión
+          Bienvenido, somos Altec Ploteos
         </h1>
         <p className="max-w-xl text-lg text-muted">
           Servicios de ploteo, impresión de planos y diseño gráfico en Godoy Cruz, Mendoza.
           Atención personalizada para particulares, empresas y profesionales.
         </p>
 
-        <ServiceSearch />
-
         <div className="mt-2 flex flex-wrap gap-4">
-          <WhatsAppButton
-            whatsappNumber={business.sectors.tecnico.whatsapp}
-            message="Hola, quiero cotizar un servicio técnico/de arquitectura."
+          <Link
+            href="/sector-tecnico"
+            className="inline-flex items-center justify-center gap-2 rounded-[5px] bg-primary px-5 py-3 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-primary-hover"
           >
-            Sector Técnico
-          </WhatsAppButton>
-          <WhatsAppButton
-            whatsappNumber={business.sectors.grafico.whatsapp}
-            message="Hola, quiero cotizar un servicio gráfico."
-            variant="outline"
+            Ir a Sector Técnico
+          </Link>
+          <Link
+            href="/sector-grafico"
+            className="inline-flex items-center justify-center gap-2 rounded-[5px] border border-border px-5 py-3 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:border-primary hover:text-primary"
           >
-            Sector Gráfico
-          </WhatsAppButton>
+            Ir a Sector Gráfico
+          </Link>
         </div>
       </div>
     </section>

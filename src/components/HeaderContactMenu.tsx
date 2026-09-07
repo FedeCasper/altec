@@ -5,7 +5,7 @@ import { WhatsAppGlyph } from "@/components/WhatsAppButton";
 import { contactSectors } from "@/lib/contactSectors";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
-export function FloatingWhatsApp() {
+export function HeaderContactMenu() {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -30,9 +30,20 @@ export function FloatingWhatsApp() {
   }, [open]);
 
   return (
-    <div ref={containerRef} className="fixed bottom-5 right-5 z-50">
+    <div ref={containerRef} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        className="inline-flex items-center justify-center gap-2 rounded-[5px] bg-primary px-5 py-3 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-primary-hover"
+      >
+        <WhatsAppGlyph className="h-4 w-4" />
+        Consultanos
+      </button>
+
       {open && (
-        <div className="absolute bottom-full right-0 mb-3 w-56" role="menu">
+        <div className="absolute right-0 top-full z-50 w-56 pt-3" role="menu">
           <ul className="overflow-hidden rounded-xl border border-border bg-surface shadow-lg">
             {contactSectors.map((sector) => (
               <li key={sector.id} role="none">
@@ -51,17 +62,6 @@ export function FloatingWhatsApp() {
           </ul>
         </div>
       )}
-
-      <button
-        type="button"
-        onClick={() => setOpen((value) => !value)}
-        aria-haspopup="menu"
-        aria-expanded={open}
-        aria-label="Contactar por WhatsApp"
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-transform hover:scale-105 hover:bg-primary-hover"
-      >
-        <WhatsAppGlyph className="h-7 w-7" />
-      </button>
     </div>
   );
 }

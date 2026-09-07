@@ -88,7 +88,7 @@ export const sectorGraficoServices: Service[] = [
     description: "Trabajos personalizados según las necesidades del cliente.",
     whatsappMessage: "Hola, quiero consultar por impresiones a color A4/A3.",
     icon: "printer",
-    tags: ["impresión", "color", "a4", "a3", "stickers"],
+    tags: ["impresión", "color", "a4", "a3", "stickers", "fotos", "afiches", "flyers"],
   },
   {
     id: "vinilos",
@@ -96,7 +96,7 @@ export const sectorGraficoServices: Service[] = [
     description: "Trabajos personalizados en diferentes medidas y características.",
     whatsappMessage: "Hola, quiero consultar por vinilos.",
     icon: "vinyl",
-    tags: ["vinilos", "adhesivos", "stickers", "vidriera"],
+    tags: ["vinilos", "adhesivos", "stickers", "vidriera", "troquelado", "adhesivo"],
   },
   {
     id: "lonas",
@@ -104,7 +104,7 @@ export const sectorGraficoServices: Service[] = [
     description: "Lonas de gran formato en distintas terminaciones para fachadas, eventos y locales.",
     whatsappMessage: "Hola, quiero cotizar lonas.",
     icon: "tarp",
-    tags: ["lonas", "gran formato", "fachada", "backlight"],
+    tags: ["lonas", "gran formato", "fachada", "backlight", "banner", "cartel"],
   },
   {
     id: "banners",
@@ -112,7 +112,7 @@ export const sectorGraficoServices: Service[] = [
     description: "Banners clásicos y roll up para stands, eventos y locales.",
     whatsappMessage: "Hola, quiero cotizar banners.",
     icon: "rollup",
-    tags: ["banners", "roll up", "stands", "eventos"],
+    tags: ["banners", "roll up", "stands", "eventos", "carteles", "publicidad"],
   },
   {
     id: "carteleria",
@@ -120,7 +120,7 @@ export const sectorGraficoServices: Service[] = [
     description: "Producción de cartelería personalizada, medidas y características según pedido.",
     whatsappMessage: "Hola, quiero cotizar cartelería.",
     icon: "sign",
-    tags: ["cartelería", "carteles", "señalética"],
+    tags: ["cartelería", "carteles", "señalética", "cartel de obra"],
   },
   {
     id: "gigantografias",

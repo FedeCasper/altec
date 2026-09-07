@@ -16,17 +16,8 @@ export function MaterialSelector({ label, options, fallbackDescription }: Props)
 
   return (
     <div className="flex flex-col gap-8">
-      {description && (
-        <div>
-          <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground">
-            Detalles
-          </h2>
-          <p className="mt-4 text-sm leading-relaxed text-muted">{description}</p>
-        </div>
-      )}
-
       <div>
-        <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground">
+        <h2 className="font-heading text-base font-semibold uppercase tracking-wide text-foreground">
           {label}
         </h2>
         <div className="mt-4 flex flex-wrap gap-2">
@@ -48,9 +39,18 @@ export function MaterialSelector({ label, options, fallbackDescription }: Props)
         </div>
       </div>
 
+      {description && (
+        <div>
+          <h2 className="font-heading text-base font-semibold uppercase tracking-wide text-foreground">
+            Detalles
+          </h2>
+          <p className="mt-4 text-sm leading-relaxed text-muted">{description}</p>
+        </div>
+      )}
+
       {selected.weights && selected.weights.length > 0 && (
         <div>
-          <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground">
+          <h2 className="font-heading text-base font-semibold uppercase tracking-wide text-foreground">
             Gramajes disponibles
           </h2>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -68,7 +68,7 @@ export function MaterialSelector({ label, options, fallbackDescription }: Props)
 
       {selected.sizes && selected.sizes.length > 0 && (
         <div>
-          <h2 className="font-heading text-sm font-semibold uppercase tracking-wide text-foreground">
+          <h2 className="font-heading text-base font-semibold uppercase tracking-wide text-foreground">
             Tamaños disponibles
           </h2>
           <div className="mt-4 flex flex-wrap gap-2">

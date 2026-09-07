@@ -4,10 +4,16 @@ import { sectorGraficoServices, sectorTecnicoServices } from "@/content/services
 import { siteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const homeEntry = {
+    url: siteUrl,
+    changeFrequency: "monthly" as const,
+    priority: 1,
+  };
+
   const navEntries = navItems.map((item) => ({
     url: `${siteUrl}${item.href}`,
     changeFrequency: "monthly" as const,
-    priority: item.href === "/" ? 1 : 0.7,
+    priority: 0.7,
   }));
 
   const graficoServiceEntries = sectorGraficoServices.map((service) => ({
@@ -22,5 +28,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...navEntries, ...graficoServiceEntries, ...tecnicoServiceEntries];
+  return [homeEntry, ...navEntries, ...graficoServiceEntries, ...tecnicoServiceEntries];
 }
