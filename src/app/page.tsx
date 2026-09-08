@@ -8,7 +8,6 @@ import { SectorOverviewCard } from "@/components/SectorOverviewCard";
 import { HoursBlock } from "@/components/HoursBlock";
 import { MapEmbed } from "@/components/MapEmbed";
 import { business } from "@/content/business";
-import { sectorGraficoServices, sectorTecnicoServices } from "@/content/services";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -52,15 +51,13 @@ export default function Home() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           <SectorOverviewCard
             title={business.sectors.tecnico.label}
-            description="Ploteo, impresión de planos, escaneo, digitalización en AutoCAD, anillados y libro de obra para arquitectos, ingenieros, constructores y estudiantes."
+            description="Servicios técnicos de ploteo, impresión y digitalización para arquitectos, ingenieros, constructores y estudiantes."
             href="/sector-tecnico"
-            services={sectorTecnicoServices.map((s) => s.name)}
           />
           <SectorOverviewCard
             title={business.sectors.grafico.label}
-            description="Vinilos, lonas, banners, gigantografías, cartelería, papelería, folletos y diseño gráfico para particulares y empresas."
+            description="Impresión y diseño gráfico de gran formato para particulares y empresas."
             href="/sector-grafico"
-            services={sectorGraficoServices.map((s) => s.name)}
           />
         </div>
       </section>

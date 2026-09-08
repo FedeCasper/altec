@@ -41,7 +41,7 @@ export function Header() {
       <div className="hidden border-b border-border xl:block">
         <div className="mx-auto max-w-6xl px-6">
           <nav>
-            <ul className="flex items-center gap-4 py-1.5">
+            <ul className="flex items-center justify-between gap-4 py-1.5">
               {navItems.map((item) => {
                 const services = sectorDropdowns[item.href];
 

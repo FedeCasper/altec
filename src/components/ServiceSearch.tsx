@@ -38,7 +38,7 @@ export function ServiceSearch() {
   }, [query]);
 
   return (
-    <div className="relative w-full max-w-xl">
+    <div className="relative w-full">
       <div className="relative">
         <svg
           viewBox="0 0 24 24"

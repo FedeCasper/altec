@@ -4,10 +4,9 @@ type Props = {
   title: string;
   description: string;
   href: string;
-  services: string[];
 };
 
-export function SectorOverviewCard({ title, description, href, services }: Props) {
+export function SectorOverviewCard({ title, description, href }: Props) {
   return (
     <Link
       href={href}
@@ -17,17 +16,7 @@ export function SectorOverviewCard({ title, description, href, services }: Props
         {title}
       </h3>
       <p className="text-sm text-muted">{description}</p>
-      <ul className="flex flex-wrap gap-2">
-        {services.map((service) => (
-          <li
-            key={service}
-            className="rounded-[5px] border border-border px-3 py-1 text-xs uppercase tracking-wide text-muted"
-          >
-            {service}
-          </li>
-        ))}
-      </ul>
-      <span className="mt-2 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-primary group-hover:text-primary-hover">
+      <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-primary group-hover:text-primary-hover">
         Ver servicios
         <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
           <path d="M5 12h14M13 5l7 7-7 7" />

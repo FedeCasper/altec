@@ -1,7 +1,7 @@
 import { business } from "@/content/business";
 import { WhatsAppButton, WhatsAppGlyph } from "@/components/WhatsAppButton";
 
-function MailGlyph({ className }: { className?: string }) {
+export function MailGlyph({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"

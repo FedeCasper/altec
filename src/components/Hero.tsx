@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SectorSendFilesCards } from "@/components/SectorSendFilesCards";
 
 export function Hero() {
   return (
@@ -23,19 +23,8 @@ export function Hero() {
           Atención personalizada para particulares, empresas y profesionales.
         </p>
 
-        <div className="mt-2 flex flex-wrap gap-4">
-          <Link
-            href="/sector-tecnico"
-            className="inline-flex items-center justify-center gap-2 rounded-[5px] bg-primary px-5 py-3 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-primary-hover"
-          >
-            Ir a Sector Técnico
-          </Link>
-          <Link
-            href="/sector-grafico"
-            className="inline-flex items-center justify-center gap-2 rounded-[5px] border border-border px-5 py-3 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:border-primary hover:text-primary"
-          >
-            Ir a Sector Gráfico
-          </Link>
+        <div className="mt-2 max-w-2xl">
+          <SectorSendFilesCards />
         </div>
       </div>
     </section>
