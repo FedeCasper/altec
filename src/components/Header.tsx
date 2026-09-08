@@ -34,6 +34,17 @@ export function Header() {
             <HeaderContactMenu />
           </div>
 
+          <Link
+            href="/admin/login"
+            aria-label="Acceso administradores"
+            className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-md text-muted transition-colors hover:text-primary xl:flex"
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+              <path d="M4 20c0-3.5 3.5-6 8-6s8 2.5 8 6" />
+            </svg>
+          </Link>
+
           <MobileNav />
         </div>
       </div>

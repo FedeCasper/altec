@@ -35,6 +35,19 @@ export function MobileNav() {
                 </Link>
               </li>
             ))}
+            <li className="border-t border-border pt-4">
+              <Link
+                href="/admin/login"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 text-sm text-muted hover:text-primary"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+                  <path d="M4 20c0-3.5 3.5-6 8-6s8 2.5 8 6" />
+                </svg>
+                Acceso administradores
+              </Link>
+            </li>
           </ul>
         </nav>
       )}
