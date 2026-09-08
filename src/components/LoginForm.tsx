@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import { loginAction, type LoginState } from "@/app/admin/login/actions";
 
 const inputClassName =
-  "w-full rounded-lg border border-border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-primary focus:outline-none";
+  "w-full rounded-[5px] border border-border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-primary focus:outline-none";
 
 const initialState: LoginState = { error: null };
 
@@ -36,7 +36,7 @@ export function LoginForm({ className }: { className?: string }) {
       <button
         type="submit"
         disabled={pending}
-        className="rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-white disabled:opacity-60"
+        className="inline-flex items-center justify-center gap-2 rounded-[5px] bg-primary px-5 py-3 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-primary-hover disabled:opacity-60"
       >
         {pending ? "Ingresando..." : "Ingresar"}
       </button>

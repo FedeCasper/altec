@@ -45,7 +45,7 @@ export function MobileNav() {
                   <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
                   <path d="M4 20c0-3.5 3.5-6 8-6s8 2.5 8 6" />
                 </svg>
-                Acceso administradores
+                Ingresar
               </Link>
             </li>
           </ul>

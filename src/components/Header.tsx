@@ -36,7 +36,7 @@ export function Header() {
 
           <Link
             href="/admin/login"
-            aria-label="Acceso administradores"
+            aria-label="Ingresar"
             className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-md text-muted transition-colors hover:text-primary xl:flex"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
